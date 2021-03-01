@@ -11,7 +11,7 @@ const key = config.key
 
 const databaseId = config.database.id
 const containerId = config.container.id
-const partitionKey = { kind: 'id', paths: ['/id'] }
+const partitionKey = { paths: ['/id'] }
 
 const options = {
       endpoint: endpoint,
@@ -180,12 +180,12 @@ createDatabase()
   .then(() => createContainer())
   .then(() => readContainer())
   .then(() => scaleContainer())
-  .then(() => createFamilyItem(config.items.Andersen))
-  .then(() => createFamilyItem(config.items.Wakefield))
+  .then(() => createFamilyItem(config.items))
+  .then(() => createFamilyItem(config.items))
   .then(() => queryContainer())
-  .then(() => replaceFamilyItem(config.items.Andersen))
+  .then(() => replaceFamilyItem(config.items))
   .then(() => queryContainer())
-  .then(() => deleteFamilyItem(config.items.Andersen))
+  // .then(() => deleteFamilyItem(config.items))
   .then(() => {
     exit(`Completed successfully`)
   })
